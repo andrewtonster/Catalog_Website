@@ -21,6 +21,7 @@ header {
 
 .logo {
   cursor: pointer;
+  margin-right: auto;
 }
 .nav_links {
   list-style: none;
@@ -41,7 +42,7 @@ header {
 
 button {
   padding: 9px 25px;
-  background-color: red;
+
   border: none;
   border-radius: 50px;
   cursor: pointer;
@@ -65,4 +66,39 @@ button {
 .dark_theme {
   --primary-color: grey;
   --secondary-color: white;
+}
+
+.magnifier_img {
+  width: 15px;
+}
+
+.search_flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search_container {
+  border-radius: 20px;
+  background-color: white;
+  padding-left: 20px;
+}
+
+.search_container input {
+  width: 250px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: black;
+}
+
+.search_container button {
+  background-color: white;
+}
+
+.search_container img {
+  background-color: white;
+}
+::placeholder {
+  color: black;
 }
