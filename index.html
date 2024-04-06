@@ -7,25 +7,35 @@
     <script type="text/javascript" src="scripts.js"></script>
   </head>
 
-  <body>
-    <header class="main-header">
-      <h1 class="title">LA TV Shows</h1>
-    </header>
-    <div id="card-container"></div>
-    <div class="card" style="display: none">
-      <div class="card-content">
-        <h2>TV Show Title</h2>
-        <img src="" alt="TV Show Poster" />
-        <ul>
-          <li>Bullet Point 1</li>
-          <li>Bullet Point 2</li>
-          <li>Bullet Point 3</li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer">
-      <button onclick="quoteAlert();">Hello</button>
-      <button onclick="removeLastCard();">Remove A Card!</button>
-    </div>
+  <body class="dark_theme">
+    <main>
+      <header>
+        <img
+          class="logo"
+          src="images/icons8-star-pokemon-100.png"
+          alt="pokedex"
+        />
+        <nav>
+          <ul class="nav_links">
+            <li><a href="#">Pokemon</a></li>
+            <li><a href="#">Items</a></li>
+          </ul>
+        </nav>
+        <img id="dark_mode" src="images/sun.png" />
+      </header>
+    </main>
   </body>
+
+  <script>
+    var icon = document.getElementById("dark_mode");
+
+    icon.onclick = () => {
+      document.body.classList.toggle("dark_theme");
+      if (document.body.classList.contains("dark_theme")) {
+        icon.src = "images/sun.png";
+      } else {
+        icon.src = "images/moon.png";
+      }
+    };
+  </script>
 </html>
