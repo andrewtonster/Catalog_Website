@@ -4,7 +4,9 @@
   padding: 0;
   background-color: var(--primary-color);
 }
-
+img {
+  width: 30px;
+}
 a,
 li,
 button {
@@ -101,4 +103,28 @@ button {
 }
 ::placeholder {
   color: black;
+}
+
+.container {
+  width: 100%;
+}
+
+.catalog {
+  display: grid;
+}
+.pokemon_card {
+}
+.pokemon_id_container {
+}
+
+.pokemon_id_text {
+}
+
+.pokemon_img_container {
+}
+
+.pokemon_name_container {
+}
+
+.pokemon_name_text {
 }

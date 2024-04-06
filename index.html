@@ -4,7 +4,7 @@
     <title>Hello World</title>
     <meta name="description" content="A Catalog of Shows Set in Los Angeles" />
     <link rel="stylesheet" href="style.css" />
-    <script type="text/javascript" src="scripts.js"></script>
+    <script src="index.js" defer></script>
   </head>
 
   <body class="dark_theme">
@@ -24,14 +24,49 @@
         <img id="dark_mode" src="images/sun.png" />
       </header>
 
-      <div class="search_flex">
-        <div class="search_container">
-          <input type="text" placeholder="Search..." />
-          <button>
-            <img class="magnifier_img" src="images/magnifier.png" />
-          </button>
+      <div class="search_body">
+        <div class="search_flex">
+          <div class="search_container">
+            <input class="input" type="text" placeholder="Search..." />
+            <button>
+              <img class="magnifier_img" src="images/magnifier.png" />
+            </button>
+          </div>
         </div>
+
+        <div class="filter_container">
+
+          <div class="filter_img_container">
+            <img src="images/filter.png" class="sort_img" id="sort_img" />
+          </div>
+
+          <div class="filter_form_container">
+            <p>Sort by:</p>
+            <div class="filter_wrap">
+              <div>
+                <input
+                  type="radio"
+                  id="number"
+                  name="filters"
+                  value="number"
+                  checked
+                />
+                <label for="number" class="body3-fonts">Number</label>
+              </div>
+              <div>
+                <input type="radio" id="name" name="filters" value="name" />
+                <label for="name" class="body3-fonts">Name</label>
+              </div>
+            </div>
+        </div>
+
       </div>
+      <section class="pokemon_catalog_section">
+        <div class="container">
+          <div class="catalog"></div>
+        </div>
+        <div id="not_found">Pokemon Not found</div>
+      </section>
     </main>
   </body>
 
