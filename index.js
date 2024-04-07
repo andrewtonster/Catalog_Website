@@ -12,13 +12,9 @@ icon.onclick = () => {
 
 ///
 const catalog = document.querySelector(".catalog");
-
 const input = document.querySelector(".input");
-
 const numberFilter = document.querySelector("#number");
-
 const nameFilter = document.querySelector("#name");
-
 const notFound = document.querySelector("#not_found");
 
 let pokemonList = [];
@@ -98,3 +94,33 @@ const createPokemonCard = async (pokemon) => {
   });
 };
 fetchData();
+
+const handleSearch = () => {
+  const userSearch = input.value.toLowerCase();
+  console.log(userSearch);
+  let pokemonFilter;
+
+  if (numberFilter.checked) {
+    pokemonFilter = pokemonList.filter((pokemon) => {
+      const pokemonID = pokemon.url.split("/")[6];
+      return pokemonID.startsWith(userSearch);
+    });
+  } else if (nameFilter.checked) {
+    console.log("name filter checkd");
+    pokemonFilter = pokemonList.filter((pokemon) => {
+      return pokemon.name.toLowerCase().startsWith(userSearch);
+    });
+  } else {
+    pokemonFilter = pokemonList;
+  }
+
+  createPokemonCard(pokemonFilter);
+
+  if (pokemonFilter.length === 0) {
+    notFound.style.display = "block";
+  } else {
+    notFound.style.display = "none";
+  }
+};
+
+input.addEventListener("keyup", handleSearch);
