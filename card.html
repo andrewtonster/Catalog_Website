@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokemon Detail</title>
+    <link rel="stylesheet" href="card.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script src="./card.js" defer></script>
+  </head>
+  <body>
+    <div class="circle-container">
+        <div class="bottom"></div>
+    </div>
+    <main class="detail-main main">
+      <div class="header-wrapper">
+        <div class="header-wrap">
+          <a href="./index.html" class="back-btn-wrap">
+            <span class="material-icons"> arrow_back </span>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <div class="title_container">
+          <div>
+            <h1 class="name"></h1>
+          </div>
+          <div class="pokemon_id_container">
+            <p class="id_text"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="featured-img">
+        <a href="#" class="arrow left-arrow" id="leftArrow">
+          <span class="material-icons"> chevron_left </span>
+        </a>
+        <div class="pokemon_img_container">
+          <img src="" alt="" />
+        </div>
+        <a href="#" class="arrow right-arrow" id="rightArrow">
+          <span class="material-icons"> navigate_next </span>
+        </a>
+      </div>
+
+      <div class="type_container">
+       
+      </div>
+
+      <div class="detail-card-detail-wrapper">
+        <div class="pokemon-detail-wrapper">
+          <div class="pokemon-detail-wrap">
+            <div class="pokemon-detail">
+              <p class="pokemon_hp"></p>
+            </div>
+            <p class="stat_name">HP</p>
+          </div>
+
+          <div class="pokemon-detail-wrap">
+            <div class="pokemon-detail">
+              <p class="pokemon_atk"></p>
+            </div>
+            <p class="stat_name">Attack</p>
+          </div>
+
+          <div class="pokemon-detail-wrap">
+            <div class="pokemon-detail">
+              <p class="pokemon_def"></p>
+            </div>
+            <p class="stat_name">Defense</p>
+          </div>
+
+          <div class="pokemon-detail-wrap">
+            <div class="pokemon-detail">
+              <p class="pokemon_sp_atk"></p>
+            </div>
+            <p class="stat_name">Sp. Atk</p>
+          </div>
+
+          <div class="pokemon-detail-wrap">
+            <div class="pokemon-detail">
+              <p class="pokemon_sp_def"></p>
+            </div>
+            <p class="stat_name">Sp. Def</p>
+          </div>
+
+          <div class="pokemon-detail-wrap">
+            <div class="pokemon-detail">
+              <p class="pokemon_spd"></p>
+            </div>
+            <p class="stat_name">Speed</p>
+          </div>
+        </div>
+
+        <hr />
+
+        <p class="description_title">Description</p>
+        <p class="pokemon_description"></p>
+
+        <div class="card_container">
+            <div class="card_item">
+                <p class="card_title">Height</p>
+                <p class="card_value pokemon_height"></p>
+            </div>
+
+            <div class="card_item">
+                <p class="card_title">Weight</p>
+                <p class="card_value pokemon_weight"></p>
+            </div>
+
+            <div class="card_item">
+                <p class="card_title">Habitat</p>
+                <p class="card_value pokemon_habitat"></p>
+            </div>
+
+            <div class="card_item">
+                <p class="card_title">Generation</p>
+                <p class="card_value pokemon_generation"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

@@ -2,8 +2,14 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background-color: var(--primary-color);
 }
+
+html,
+body {
+  background-color: var(--primary-color);
+  height: 100%;
+}
+
 img {
   width: 30px;
 }
@@ -19,11 +25,15 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 30px 10%;
+  position: relative;
+  z-index: 4;
+  background-color: var(--primary-color);
 }
 
 .logo {
   cursor: pointer;
   margin-right: auto;
+  width: 15rem;
 }
 .nav_links {
   list-style: none;
@@ -39,7 +49,7 @@ header {
 }
 
 .nav_links li a:hover {
-  color: red;
+  color: var(--primary-color);
 }
 
 button {
@@ -51,23 +61,26 @@ button {
   transition: all 0.3s ease 0s;
 }
 
-.logo {
-  width: 100px;
-}
-
 :root {
-  --primary-color: white;
-  --secondary-color: black;
+  --primary-color: rgb(36, 39, 45);
+  --secondary-color: #444a50;
+  --third-color: rgb(36, 39, 45);
+  --text-color: white;
+  --id-color: #7b7d7e;
+  --filter-color: #cccccc;
 }
-
 #dark_mode {
-  width: 50px;
+  width: 30px;
   cursor: pointer;
 }
 
 .dark_theme {
-  --primary-color: grey;
-  --secondary-color: white;
+  --primary-color: #104c8c;
+  --secondary-color: #4d80bf;
+  --third-color: white;
+  --text-color: black;
+  --id-color: black;
+  --filter-color: #cccccc;
 }
 
 .magnifier_img {
@@ -78,6 +91,9 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: var(--primary-color);
+  padding-bottom: 2rem;
+  gap: 1rem;
 }
 
 .search_container {
@@ -87,11 +103,14 @@ button {
 }
 
 .search_container input {
-  width: 250px;
+  width: 500px;
+  height: 50px;
+  font-size: 1rem;
   background: transparent;
   border: none;
   outline: none;
   color: black;
+  margin-right: auto;
 }
 
 .search_container button {
@@ -107,24 +126,140 @@ button {
 
 .container {
   width: 100%;
+  background-color: var(--primary-color);
 }
 
 .catalog {
-  display: grid;
-}
-.pokemon_card {
-}
-.pokemon_id_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: 8rem; /* Adjust margin as needed */
+  margin-right: 8rem; /* Adjust margin as needed */
+  background-color: var(--primary-color);
+  border-radius: 1rem;
+  padding: 3rem 1rem;
 }
 
+.pokemon_card {
+  cursor: pointer;
+  /* width: calc(20% - 20px); */
+  width: 15rem;
+  height: 15rem;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  border-style: dashed;
+  border-width: 2px;
+  border-color: white;
+  margin: 10px;
+
+  background-color: var(--secondary-color);
+  border-top-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  gap: 1.5rem;
+}
+.pokemon_id_container {
+  align-self: flex-start; /* Align to the top left */
+  padding: 5px; /* Optional: Add padding */
+}
+
+.pokemon_id_container {
+  background-color: var(--secondary-color);
+}
 .pokemon_id_text {
+  color: var(--id-color);
 }
 
 .pokemon_img_container {
+  background-color: var(--secondary-color);
+}
+
+.pokemon_img_container img {
+  width: 6rem;
+  background-color: var(--secondary-color);
 }
 
 .pokemon_name_container {
 }
 
 .pokemon_name_text {
+  text-align: center; /* Center the text */
+  color: var(--text-color);
+}
+
+.dark_mode_container {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--secondary-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+.dropdown {
+  display: flex;
+  width: 150px;
+  background-color: antiquewhite;
+  padding: 1rem 2rem;
+  background-color: var(--filter-color);
+  border-radius: 5px;
+  box-shadow: 5px 5px 0 #ffcc04; /* Change the values as needed */
+}
+
+.dropdown_btn {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: hsl(0, 0%, 80%);
+  color: black;
+
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown a {
+  display: block;
+  color: black;
+  text-decoration: none;
+  padding: 10px 15px;
+}
+.dropdown .content {
+  display: none;
+  position: absolute;
+  background-color: hsl(0, 0%, 95%);
+  min-width: 100px;
+  box-shadow: 2px 2px 5px hsla(0, 0%, 0%, 0.8);
+}
+.dropdown:hover .content {
+  display: block;
+  margin-top: 30px;
+}
+.dropdown:hover button {
+  background-color: hsl(0, 0%, 70%);
+}
+.dropdown a:hover {
+  background-color: hsl(0, 0%, 90%);
+  cursor: pointer;
+}
+
+.unavaliable {
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--primary-color);
+  display: none;
+}
+
+.unavaliable span {
+  font-size: 32px;
+  color: var(--text-color);
+}
+
+.unown {
+  width: 10rem;
 }

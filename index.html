@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Hello World</title>
+    <title>Pokedex</title>
     <meta name="description" content="A Catalog of Shows Set in Los Angeles" />
     <link rel="stylesheet" href="style.css" />
     <script src="index.js" defer></script>
@@ -10,67 +10,35 @@
   <body class="dark_theme">
     <main>
       <header>
-        <img
-          class="logo"
-          src="images/icons8-star-pokemon-100.png"
-          alt="pokedex"
-        />
-        <nav>
-          <ul class="nav_links">
-            <li><a href="#">Pokemon</a></li>
-            <li><a href="#">Items</a></li>
-          </ul>
-        </nav>
-        <img id="dark_mode" src="images/sun.png" />
+        <img class="logo" src="images/Pokédex_logo.png" alt="pokedex" />
+        <div class="dark_mode_container">
+          <img id="dark_mode" src="images/sun.png" />
+        </div>
       </header>
 
-      <div class="search_body">
-        <div class="search_flex">
-          <div class="search_container">
-            <input class="input" type="text" placeholder="Search..." />
-            <button>
-              <img class="magnifier_img" src="images/magnifier.png" />
-            </button>
-          </div>
+      <div class="search_flex">
+        <div class="search_container">
+          <input class="input" type="text" placeholder="Search..." />
+          <button>
+            <img class="magnifier_img" src="images/magnifier.png" />
+          </button>
         </div>
 
-        <div class="filter_container">
-
-          <div class="filter_img_container">
-            <img src="images/filter.png" class="sort_img" id="sort_img" />
-          </div>
-
-          <div class="filter_form_container">
-            <p>Sort by:</p>
-            <div class="filter_wrap">
-              <div>
-                <input
-                  type="radio"
-                  id="number"
-                  name="filters"
-                  value="number"
-                  checked
-                />
-                <label for="number" class="body3-fonts">Number</label>
-              </div>
-              <div>
-                <input type="radio" id="name" name="filters" value="name" />
-                <label for="name" class="body3-fonts">Name</label>
-              </div>
+        <div class="dropdown">
+          <span class="dropdown_btn">Filter By</span>
+            <div class="content">
+              <a id="name">Pokemon</a>
+              <a id="number">ID</a>
             </div>
         </div>
-
       </div>
+
       <section class="pokemon_catalog_section">
         <div class="container">
           <div class="catalog"></div>
+          <div class="unavaliable"><span>Uh Oh, Pokemon not Found</span> <span><img class = "unown" src= "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/201.png"/></span></p></div>
         </div>
-        <div id="not_found">Pokemon Not found</div>
       </section>
     </main>
   </body>
-
-  <script>
-   
-  </script>
 </html>

@@ -1,0 +1,211 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: white;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center the content horizontally */
+  align-items: center; /* Center the content vertically */
+  height: 100vh; /* Ensure the main container takes the full height of the viewport */
+  background-color: white;
+}
+
+.header-wrapper {
+  align-self: flex-start;
+  margin-top: 3rem;
+  margin-left: 3rem;
+  position: relative;
+  z-index: 3;
+}
+.back-btn-wrap {
+  display: inline-flex; /* Use flexbox for alignment */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  width: 40px; /* Adjust the width and height as needed for your circle */
+  height: 40px;
+  border-radius: 50%; /* Makes it a circle */
+  background-color: #e0e0e0; /* Background color of the circle */
+  text-decoration: none;
+  margin-bottom: 3rem;
+}
+
+.material-icons {
+  font-size: 24px; /* Adjust the font size of the arrow */
+}
+
+.name_tag {
+  display: flex;
+  background-color: red;
+}
+
+.title_container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 3rem;
+  z-index: 5;
+}
+
+.pokemon_id_container {
+  margin-left: 1rem;
+}
+
+.featured-img {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* .detail-main {
+  display: flex;
+  justify-content: center;
+} */
+
+.arrow {
+  position: relative;
+  z-index: 2;
+}
+.pokemon_img_container {
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+}
+.pokemon_img_container img {
+  width: 300px;
+  height: 100%;
+  object-fit: cotain;
+  z-index: 5;
+  position: relative;
+}
+
+.card {
+  border: solid black;
+}
+
+.name {
+  color: white;
+  font-size: 3rem;
+  position: relative;
+}
+
+.id_text {
+  color: white;
+  font-size: 1rem;
+  position: relative;
+}
+
+.detail-card-detail-wrapper {
+  background-color: white;
+  /* border: solid black; */
+  border-radius: 1rem;
+  width: 30rem;
+  height: 20rem;
+  padding: 0px 10px;
+}
+
+.type_container {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.pokemon-description {
+  font-size: 1.2rem;
+}
+
+.pokemon-detail-wrap {
+  background-color: white;
+  width: 4rem;
+}
+.pokemon-detail-wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1rem;
+  height: auto;
+}
+
+.pokemon-detail {
+  margin-bottom: 4px;
+}
+
+.pokemon-detail p {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #7f7f7f;
+}
+
+.stat_name {
+  text-align: center;
+  font-size: 1.1rem;
+}
+hr {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
+}
+
+.description_title {
+  color: black;
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.type {
+  padding: 4px 24px;
+  border-radius: 12px;
+  pointer-events: none;
+  cursor: not-allowed;
+  border: none;
+  color: white;
+  font-size: 1rem;
+}
+
+.card_container {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1rem;
+  height: auto;
+}
+
+.card_item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  width: 5rem;
+  height: 4rem;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
+}
+
+.card_title {
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+
+.card_value {
+  text-align: center;
+}
+
+.card_title {
+  text-align: center;
+}
+
+.circle-container {
+  position: absolute;
+  width: 100%;
+  height: 55vh; /* Adjust height as needed */
+  overflow: hidden;
+  border-bottom-left-radius: 300px;
+  border-bottom-right-radius: 300px;
+  z-index: 2;
+}
