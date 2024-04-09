@@ -7,30 +7,31 @@
 body {
   background-color: white;
 }
+
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Center the content horizontally */
-  align-items: center; /* Center the content vertically */
-  height: 100vh; /* Ensure the main container takes the full height of the viewport */
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   background-color: white;
 }
 
-.header-wrapper {
+.back_btn_container {
   align-self: flex-start;
   margin-top: 3rem;
   margin-left: 3rem;
   position: relative;
   z-index: 3;
 }
-.back-btn-wrap {
-  display: inline-flex; /* Use flexbox for alignment */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  width: 40px; /* Adjust the width and height as needed for your circle */
+.back_btn_link {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
   height: 40px;
-  border-radius: 50%; /* Makes it a circle */
-  background-color: #e0e0e0; /* Background color of the circle */
+  border-radius: 50%;
+  background-color: #e0e0e0;
   text-decoration: none;
   margin-bottom: 3rem;
 }
@@ -56,16 +57,11 @@ body {
   margin-left: 1rem;
 }
 
-.featured-img {
+.pokemon_display {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
-
-/* .detail-main {
-  display: flex;
-  justify-content: center;
-} */
 
 .arrow {
   position: relative;
@@ -100,7 +96,7 @@ body {
   position: relative;
 }
 
-.detail-card-detail-wrapper {
+.pokemon_card_container {
   background-color: white;
   /* border: solid black; */
   border-radius: 1rem;
@@ -117,26 +113,27 @@ body {
   gap: 1rem;
 }
 
-.pokemon-description {
-  font-size: 1.2rem;
+.pokemon_description {
+  font-size: 1rem;
+  margin-bottom: 16px;
 }
 
-.pokemon-detail-wrap {
+.pokemon_stat_container {
   background-color: white;
   width: 4rem;
 }
-.pokemon-detail-wrapper {
+.pokemon_stat_list_container {
   display: flex;
   justify-content: space-between;
   padding: 1rem 1rem;
   height: auto;
 }
 
-.pokemon-detail {
+.pokemon_stat {
   margin-bottom: 4px;
 }
 
-.pokemon-detail p {
+.pokemon_stat p {
   text-align: center;
   font-size: 1.5rem;
   color: #7f7f7f;
@@ -155,8 +152,9 @@ hr {
 
 .description_title {
   color: black;
-  font-size: 24px;
-  margin-bottom: 8px;
+  font-size: 20px;
+  margin-bottom: 12px;
+  font-weight: bold;
 }
 
 .type {
@@ -200,7 +198,7 @@ hr {
   text-align: center;
 }
 
-.circle-container {
+.circle_container {
   position: absolute;
   width: 100%;
   height: 55vh; /* Adjust height as needed */

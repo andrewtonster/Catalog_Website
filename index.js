@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // DARK MODE FUNCTIONANILTY
+  const MAX_POKEMON = 646;
+  // Dark mode functionality
   var icon = document.getElementById("dark_mode");
 
   icon.onclick = () => {
@@ -11,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
+  // initializing selectors
   const catalog = document.querySelector(".catalog");
   const input = document.querySelector(".input");
   const numberFilter = document.querySelector("#number");
@@ -20,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let filterByID = false;
   let pokemonList = [];
 
+  // Changing dropdown text based on click
   numberFilter.addEventListener("click", () => {
     filterByID = true;
     dropdown.innerText = "ID";
@@ -29,6 +32,16 @@ document.addEventListener("DOMContentLoaded", function () {
     dropdown.innerText = "Pokemon";
   });
 
+  /*
+      Helper function to capatalize first letter
+  */
+  const upperCaseFirst = (word) => {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  };
+
+  /*
+      Function to make call to API given pokemon id
+  */
   const fetchSinglePokemon = async (id) => {
     try {
       const response1 = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
@@ -44,14 +57,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
-  const upperCaseFirst = (word) => {
-    return word.charAt(0).toUpperCase() + word.slice(1);
-  };
-
+  /*
+      Function to make call to API and retrieve all pokemon up to limit
+  */
   const fetchData = async () => {
     try {
       const response = await fetch(
-        `https://pokeapi.co/api/v2/pokemon?limit=500`
+        `https://pokeapi.co/api/v2/pokemon?limit=${MAX_POKEMON}`
       );
       const data = await response.json();
       pokemonList = data.results;
@@ -61,20 +73,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
-  const fetchType = async (id) => {
-    try {
-      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-      const data = await response.json(); // Parsing response as JSON
-      const types = data.types; // Accessing types array from the response data
-      const typeList = types.map((type) => {
-        return type.type.name; // Accessing type name from each type object
-      });
-      return typeList;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
+  /*
+      Function to make create each card in the catalog
+  */
   const createPokemonCard = async (pokemon) => {
     catalog.innerHTML = "";
 
@@ -88,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <p class="pokemon_id_text">#${pokemonID}</p>
     </div>
     <div class="pokemon_img_container">
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonID}.png" alt="${
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonID}.svg" alt="${
         pokemon.name
       }" />
     </div>
@@ -109,20 +110,23 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   };
 
+  /*
+      Function to handle search based on filter
+  */
+
   const handleSearch = () => {
     let userSearch = input.value.toLowerCase().trim();
     userSearch = userSearch.replace(/\s+/g, "");
 
-    console.log(userSearch);
     let pokemonFilter;
 
+    // creating a list of filtered pokemon, and then rendering them
     if (filterByID) {
       pokemonFilter = pokemonList.filter((pokemon) => {
         const pokemonID = pokemon.url.split("/")[6];
         return pokemonID.startsWith(userSearch);
       });
     } else if (!filterByID) {
-      console.log("name filter checkd");
       pokemonFilter = pokemonList.filter((pokemon) => {
         return pokemon.name.toLowerCase().includes(userSearch);
       });
@@ -132,8 +136,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     createPokemonCard(pokemonFilter);
 
+    // if no results found, show this div
     if (pokemonFilter.length === 0) {
-      console.log("in filter");
       notFound.style.display = "flex";
     } else {
       notFound.style.display = "none";

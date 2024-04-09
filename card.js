@@ -1,7 +1,9 @@
 let pokemonId = null;
-const MAX_POKEMONS = 500;
+const MAX_POKEMONS = 646;
 
-// Waiting for content to load
+/*
+    Retrieves Id from url and calls fetch
+*/
 document.addEventListener("DOMContentLoaded", () => {
   const idParam = new URLSearchParams(window.location.search).get("id");
   const id = parseInt(idParam, 10);
@@ -14,7 +16,10 @@ document.addEventListener("DOMContentLoaded", () => {
   fetchPokemon(pokemonId);
 });
 
-// Function to get pokemon data
+/* 
+    Gets data from API and initializes click events for arrows
+    Passes Data to create pokemon Card
+*/
 const fetchPokemon = async (id) => {
   try {
     const responses = await Promise.all([
@@ -64,11 +69,17 @@ const fetchPokemon = async (id) => {
   }
 };
 
-async function nextPokemon(id) {
+/* 
+    Function to get data for the next pokemon
+*/
+const nextPokemon = async (id) => {
   pokemonId = id;
   await fetchPokemon(id);
-}
+};
 
+/* 
+    Key Value paris of pokemon type to corresponding color
+*/
 const typeColors = {
   normal: "#A8A878",
   fire: "#F08030",
@@ -90,20 +101,22 @@ const typeColors = {
   fairy: "#EE99AC",
 };
 
-// helper function, maps through the list of elements, and applies the styling for each one
-function setElementStyles(elements, cssProperty, value) {
+/*
+    Helper function, maps through the list of elements, and applies the styling for each one
+*/
+const setElementStyles = (elements, cssProperty, value) => {
   elements.forEach((element) => {
     element.style[cssProperty] = value;
   });
-}
+};
 
-function setTypeBackgroundColor(pokemon) {
+/*
+    Setting theme of card based on pokemon type
+*/
+const setTheme = (pokemon) => {
   const firstType = pokemon.types[0].type.name;
-
   const secondaryType = pokemon.types[1]?.type.name;
-  // mapping the color to the type
   const color = typeColors[firstType];
-
   const secondaryColor = typeColors[secondaryType];
 
   if (color) {
@@ -119,14 +132,11 @@ function setTypeBackgroundColor(pokemon) {
     setElementStyles([secondButton], "backgroundColor", secondaryColor);
   }
 
-  // setting the color types on th html
   const main = document.querySelector(".main");
-  const circle = document.querySelector(".circle-container");
+  const circle = document.querySelector(".circle_container");
 
   setElementStyles([main], "backgroundColor", lightenColor(color, 20));
-  //   setElementStyles([main], "borderColor", color);
   setElementStyles([circle], "backgroundColor", color);
-
   setElementStyles(
     document.querySelectorAll(".type_container > p"),
     "backgroundColor",
@@ -134,12 +144,18 @@ function setTypeBackgroundColor(pokemon) {
   );
 
   setElementStyles(document.querySelectorAll(".stat_name"), "color", color);
-}
+};
 
+/*
+    Helper function to capatalize first letter
+*/
 const upperCaseFirst = (word) => {
   return word.charAt(0).toUpperCase() + word.slice(1);
 };
 
+/*
+    Helper function to create and append element
+*/
 const createAndAppendElement = (parent, tag, options = {}) => {
   const element = document.createElement(tag);
   Object.keys(options).forEach((key) => {
@@ -149,27 +165,37 @@ const createAndAppendElement = (parent, tag, options = {}) => {
   return element;
 };
 
+/*
+    Helper function to parse data for generation and get number
+*/
 function getWordAfterHyphen(str) {
-  console.log(typeof str);
   const hyphenIndex = str.indexOf("-");
   if (hyphenIndex === -1) {
-    return ""; // Return an empty string if there is no hyphen
+    return "";
   }
-  return str.substring(hyphenIndex + 1); // Extract the word after the hyphen
+  return str.substring(hyphenIndex + 1);
 }
 
+/*
+    Function creates the Pokemon card with all the data
+    Destructors data and inserts them into the HTML
+*/
 const createCard = (pokemon, pokemonSpecies) => {
-  // recieving the pokemon data from fetch, and then destructor
   const { name, id, types, weight, height, stats } = pokemon;
   let { habitat, generation } = pokemonSpecies;
 
   if (!generation.name) {
     generation = "none";
+  } else {
+    generation = generation.name;
   }
 
   if (!habitat) {
     habitat = "none";
+  } else {
+    habitat = habitat.name;
   }
+
   const capitalizePokemonName = upperCaseFirst(name);
 
   document.querySelector(".title_container .name").textContent =
@@ -180,7 +206,6 @@ const createCard = (pokemon, pokemonSpecies) => {
     "0"
   )}`;
 
-  // setting the image of pokemon
   const imageElement = document.querySelector(".pokemon_img_container img");
   imageElement.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`;
   imageElement.alt = name;
@@ -188,7 +213,6 @@ const createCard = (pokemon, pokemonSpecies) => {
   const typeWrapper = document.querySelector(".type_container");
   typeWrapper.innerHTML = "";
 
-  // destructuring each type
   types.forEach((type) => {
     createAndAppendElement(typeWrapper, "button", {
       className: `type`,
@@ -196,7 +220,6 @@ const createCard = (pokemon, pokemonSpecies) => {
     });
   });
 
-  // setting the weight and height stats
   document.querySelector(".pokemon_hp").textContent = `${stats[0].base_stat}`;
   document.querySelector(".pokemon_atk").textContent = `${stats[1].base_stat}`;
   document.querySelector(".pokemon_def").textContent = `${stats[2].base_stat}`;
@@ -213,16 +236,19 @@ const createCard = (pokemon, pokemonSpecies) => {
   document.querySelector(".pokemon_weight").textContent = `${weight / 10}`;
 
   document.querySelector(".pokemon_habitat").textContent = `${upperCaseFirst(
-    habitat.name.toString()
+    habitat.toString()
   )}`;
   document.querySelector(
     ".pokemon_generation"
-  ).textContent = `${getWordAfterHyphen(generation.name).toString()}`;
+  ).textContent = `${getWordAfterHyphen(generation).toString()}`;
 
-  setTypeBackgroundColor(pokemon);
+  setTheme(pokemon);
 };
 
-function getBio(pokemonSpecies) {
+/*
+    Function to get the description of the Pokemon Card
+*/
+const getBio = (pokemonSpecies) => {
   for (let entry of pokemonSpecies.flavor_text_entries) {
     if (entry.language.name === "en") {
       let description = entry.flavor_text.replace(/\f/g, " ");
@@ -230,9 +256,13 @@ function getBio(pokemonSpecies) {
     }
   }
   return "";
-}
+};
 
-function lightenColor(hex, percent) {
+/*
+    Helper function to get a ligther version of Hex
+    Used for the background of the card
+*/
+const lightenColor = (hex, percent) => {
   // Remove the hash symbol if present
   hex = hex.replace("#", "");
 
@@ -260,4 +290,4 @@ function lightenColor(hex, percent) {
   }
 
   return "#" + result;
-}
+};
