@@ -24,6 +24,7 @@ body {
   position: relative;
   z-index: 3;
 }
+
 .back_btn_link {
   display: inline-flex;
   justify-content: center;
@@ -37,7 +38,7 @@ body {
 }
 
 .material-icons {
-  font-size: 24px; /* Adjust the font size of the arrow */
+  font-size: 24px;
 }
 
 .name_tag {
@@ -67,11 +68,13 @@ body {
   position: relative;
   z-index: 2;
 }
+
 .pokemon_img_container {
   width: 300px;
   height: 300px;
   overflow: hidden;
 }
+
 .pokemon_img_container img {
   width: 300px;
   height: 100%;
@@ -98,7 +101,6 @@ body {
 
 .pokemon_card_container {
   background-color: white;
-  /* border: solid black; */
   border-radius: 1rem;
   width: 30rem;
   height: 20rem;
@@ -122,6 +124,7 @@ body {
   background-color: white;
   width: 4rem;
 }
+
 .pokemon_stat_list_container {
   display: flex;
   justify-content: space-between;
@@ -143,6 +146,7 @@ body {
   text-align: center;
   font-size: 1.1rem;
 }
+
 hr {
   width: 80%;
   margin-left: auto;
@@ -182,7 +186,7 @@ hr {
   background-color: white;
   width: 5rem;
   height: 4rem;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .card_title {
@@ -201,7 +205,7 @@ hr {
 .circle_container {
   position: absolute;
   width: 100%;
-  height: 55vh; /* Adjust height as needed */
+  height: 55vh;
   overflow: hidden;
   border-bottom-left-radius: 300px;
   border-bottom-right-radius: 300px;
