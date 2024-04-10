@@ -231,10 +231,8 @@ const createCard = (pokemon, pokemonSpecies) => {
   ).textContent = `${stats[4].base_stat}`;
 
   document.querySelector(".pokemon_spd").textContent = `${stats[5].base_stat}`;
-
   document.querySelector(".pokemon_height").textContent = `${height / 10}m`;
   document.querySelector(".pokemon_weight").textContent = `${weight / 10}kg`;
-
   document.querySelector(".capture_rate").textContent = `${upperCaseFirst(
     `${capture_rate}%`
   )}`;
