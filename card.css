@@ -37,10 +37,6 @@ body {
   margin-bottom: 3rem;
 }
 
-.material-icons {
-  font-size: 24px;
-}
-
 .name_tag {
   display: flex;
   background-color: red;
@@ -115,9 +111,14 @@ body {
   gap: 1rem;
 }
 
+.pokemon_description_container {
+  height: 3.5rem;
+}
+
 .pokemon_description {
   font-size: 1rem;
-  margin-bottom: 16px;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .pokemon_stat_container {

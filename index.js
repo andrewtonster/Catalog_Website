@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const MAX_POKEMON = 646;
+  const MAX_POKEMON = 1025;
   // Dark mode functionality
   var icon = document.getElementById("dark_mode");
 
@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <p class="pokemon_id_text">#${pokemonID}</p>
     </div>
     <div class="pokemon_img_container">
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonID}.svg" alt="${
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonID}.png" alt="${
         pokemon.name
       }" />
     </div>

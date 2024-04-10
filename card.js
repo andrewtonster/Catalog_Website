@@ -1,5 +1,5 @@
 let pokemonId = null;
-const MAX_POKEMONS = 646;
+const MAX_POKEMONS = 1025;
 
 /*
     Retrieves Id from url and calls fetch
@@ -182,7 +182,7 @@ function getWordAfterHyphen(str) {
 */
 const createCard = (pokemon, pokemonSpecies) => {
   const { name, id, types, weight, height, stats } = pokemon;
-  let { habitat, generation } = pokemonSpecies;
+  let { generation, capture_rate } = pokemonSpecies;
 
   if (!generation.name) {
     generation = "none";
@@ -190,12 +190,12 @@ const createCard = (pokemon, pokemonSpecies) => {
     generation = generation.name;
   }
 
-  if (!habitat) {
-    habitat = "none";
+  if (!capture_rate) {
+    capture_rate = "none";
   } else {
-    habitat = habitat.name;
+    capture_rate = capture_rate * 0.13;
+    capture_rate = Number(capture_rate.toFixed(2));
   }
-
   const capitalizePokemonName = upperCaseFirst(name);
 
   document.querySelector(".title_container .name").textContent =
@@ -207,7 +207,7 @@ const createCard = (pokemon, pokemonSpecies) => {
   )}`;
 
   const imageElement = document.querySelector(".pokemon_img_container img");
-  imageElement.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`;
+  imageElement.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
   imageElement.alt = name;
 
   const typeWrapper = document.querySelector(".type_container");
@@ -232,11 +232,11 @@ const createCard = (pokemon, pokemonSpecies) => {
 
   document.querySelector(".pokemon_spd").textContent = `${stats[5].base_stat}`;
 
-  document.querySelector(".pokemon_height").textContent = `${height / 10}`;
-  document.querySelector(".pokemon_weight").textContent = `${weight / 10}`;
+  document.querySelector(".pokemon_height").textContent = `${height / 10}m`;
+  document.querySelector(".pokemon_weight").textContent = `${weight / 10}kg`;
 
-  document.querySelector(".pokemon_habitat").textContent = `${upperCaseFirst(
-    habitat.toString()
+  document.querySelector(".capture_rate").textContent = `${upperCaseFirst(
+    `${capture_rate}%`
   )}`;
   document.querySelector(
     ".pokemon_generation"
